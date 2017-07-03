@@ -5,6 +5,7 @@ from dash.dependencies import Input, Output
 import dash_html_components as html
 import plotly.graph_objs as go
 import pandas as pd
+import os
 
 app = dash.Dash("Muslim Lynchings in India")
 colors = {
@@ -115,4 +116,6 @@ app.css.append_css({
 })
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.debug = True
+    port = int(os.environ.get("PORT", 8050))
+    app.run_server(host='0.0.0.0', port=port)
